@@ -1,5 +1,6 @@
 package com.learn.ws.products.service;
 
+import com.learn.ws.core.ProductCreatedEvent;
 import com.learn.ws.products.rest.CreateProductRestModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 public class ProductServiceImpl implements ProductService{
-    KafkaTemplate<String,ProductCreatedEvent> kafkaTemplate;
+    KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate;
     private final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     public ProductServiceImpl(KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate) {
