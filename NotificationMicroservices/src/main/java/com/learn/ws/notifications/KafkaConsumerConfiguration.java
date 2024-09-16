@@ -1,5 +1,6 @@
 package com.learn.ws.notifications;
 
+import com.learn.ws.notifications.error.NotRetryableException;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -42,6 +43,7 @@ public class KafkaConsumerConfiguration {
     public ConcurrentKafkaListenerContainerFactory<String,Object> kafkaListenerContainerFactory(
             ConsumerFactory<String,Object> consumerFactory, KafkaTemplate<String,Object> kafkaTemplate){
         DefaultErrorHandler defaultErrorHandler = new DefaultErrorHandler(new DeadLetterPublishingRecoverer(kafkaTemplate));
+        defaultErrorHandler.addNotRetryableExceptions(NotRetryableException.class);
 
         ConcurrentKafkaListenerContainerFactory<String,Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
