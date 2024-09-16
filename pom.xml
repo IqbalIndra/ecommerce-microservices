@@ -21,6 +21,7 @@
     </properties>
     <modules>
         <module>ProductMicroservices</module>
+        <module>NotificationMicroservices</module>
     </modules>
 
 
