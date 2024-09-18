@@ -23,6 +23,7 @@
         <module>ProductMicroservices</module>
         <module>NotificationMicroservices</module>
         <module>core</module>
+        <module>MockService</module>
     </modules>
 
 
